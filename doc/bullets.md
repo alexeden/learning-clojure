@@ -3,3 +3,8 @@
 - `defn` is a combination of `def` and `fn`
     - `fn` defines the function
     - `def` binds it to a name
+- List constructors `'(1 2 3)` are prefixed with an apostrophe because parenthesis are otherwise considered function invocation
+- Lists are NOT indexed (unlike vector)
+- Order is not preserved when adding elements to a list using `conj`
+- `into` returns a collection of the same type as its first argument
+- Commas are treated as whitespace
