@@ -8,3 +8,7 @@
 - Order is not preserved when adding elements to a list using `conj`
 - `into` returns a collection of the same type as its first argument
 - Commas are treated as whitespace
+- Records are an alternative to maps; they generally have better performance and have a named "typed" which can be used for polymorphism
+- All values logically evaluate to `true` or `false`
+    - The only false values are `false` and `nil`
+- `when` returns `nil` if the conditional is not met

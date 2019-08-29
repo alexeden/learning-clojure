@@ -8,6 +8,12 @@ Declare a variable (called a `var`)?
 (def x 10)
 ```
 
+Get a value's type?
+
+```clj
+(type 10) ; java.lang.Long
+```
+
 ## Functions
 
 Define a single-arity named function?
@@ -50,6 +56,52 @@ Declare named values local to a function's lexical scope?
     (println a b c)
   ) ;; end of let scope
 ) ;; end of function
+```
+
+## Flow Control
+
+Use an if/else?
+
+```clj
+(if (even? 2) "even" "odd") ; "even"
+```
+
+Use an if/else to conditionally evaluate multiple expressions?
+
+```clj
+(if (even? 5)
+    (do (println "even") true)
+    (do (println "off") false))
+; false
+```
+
+Evaluate multiple expressions only if a condition evaluates to true?
+
+```clj
+(when (neg? x)
+    (throw (RuntimeException. (str "x must be positive: " x))))
+```
+
+Evaluate a series of expressions in order and return a value for the first test expression that evaluates to true?
+
+```clj
+(let [x 5]
+    (cond
+        (< x 2) "x is less than 2"
+        (< x 10) "x is less than 10"
+        :else "x must be more than 10"))
+; "x is less than 10"
+```
+
+Use a `switch` block?
+
+```clj
+(defn foo [x]
+    (case x
+        5 "x is 5"
+        10 "x is 10"
+        "x isn't 5 or 10"))
+(foo 10) ; "x is 10"
 ```
 
 ## Sequential Collections
@@ -264,7 +316,25 @@ Add or update a nested key-value pair in a map?
 ; {:addr {:city "Kansas City", :state "MO", :zip 64108}}
 ```
 
+### Records
 
+Define a record structure?
+
+```clj
+(defrecord Person [first-name last-name])
+```
+
+Instantiate a record using its positional constructor?
+
+```clj
+(def me (->Person "Alex" "Eden"))
+```
+
+Instantiate a record using its map constructor?
+
+```clj
+(def me (map->Person {:first-name "Alex" :last-name "Eden"}))
+```
 
 ## Strings
 
