@@ -1,2 +1,5 @@
 - `#'ns/` is the literal representation for a var, `ns` is the namespace
 - `user` is the default namespace
+- `defn` is a combination of `def` and `fn`
+    - `fn` defines the function
+    - `def` binds it to a name
