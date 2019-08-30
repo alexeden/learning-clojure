@@ -73,7 +73,7 @@ Pipe together multiple functions, where the value is passed as the last argument
 Pipe together multiple functions, where the functions have varying insertion points?
 
 ```clj
-(as-> [:foo] v
+(as-> ["foo"] v
   (map name v)
   (first v)
   (.substring v 1))
