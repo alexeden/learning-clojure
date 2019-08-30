@@ -43,3 +43,40 @@ Declare named values local to a function's lexical scope?
   ) ;; end of let scope
 ) ;; end of function
 ```
+
+# Threading
+
+
+Pipe together multiple functions?
+
+```clj
+(defn becomeold [person]
+  (-> person
+      (update :age #(+ % 50))
+      (assoc :hair-color "gray")))
+
+(becomeold {:name "Alex" :age 28}) ; {:name "Alex", :age 78, :hair-color "gray"}
+```
+
+Pipe together multiple functions, where the value is passed as the last argument to the functions?
+
+```clj
+(defn sumofoddsquares [max]
+  (->> max
+       range
+       (filter odd?)
+       (map #(* % %))
+       (reduce +)))
+
+(sumofoddsquares 20)    ; 1330
+```
+
+Pipe together multiple functions, where the functions have varying insertion points?
+
+```clj
+(as-> [:foo] v
+  (map name v)
+  (first v)
+  (.substring v 1))
+; "oo"
+```

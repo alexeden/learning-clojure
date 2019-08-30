@@ -52,3 +52,37 @@ Ignore destructed items from a collection?
 (let [[item1 _ item3 _ item5 _] names]
   (println "Odd names:" item1 item3 item5))
 ```
+
+## Associative Destructuring
+
+Destructure a map?
+
+```clj
+(def me {:first-name "Alex" :last-name "Eden"})
+(let [{first :first-name last :last-name} me]
+  (println "Hello," first last))
+```
+
+Destructure a map by providing the keyword keys I want?
+
+```clj
+(def me {:first-name "Alex" :last-name "Eden"})
+(let [{:keys [first-name last-name]} me]
+  (println "Hello," first-name last-name))
+```
+
+
+Destructure a map and provide a default value if a key is not found?
+
+```clj
+(def me {:first-name "Alex" :last-name "Eden"})
+(let [{ first :first-name, age :age, :or {age 28}} me]
+  (println first "is" age "years old."))
+```
+
+Destructure a map and retain a binding to it?
+```clj
+(def me {:first-name "Alex" :last-name "Eden"})
+(let [{first :first-name last :last-name :as all} me]
+  (println "Hello," first last all))
+```

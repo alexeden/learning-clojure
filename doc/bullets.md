@@ -18,3 +18,7 @@
     - Sequences represent iteration as values
         - Consumers can partially iterate
     - Reducers represent iteration as function composition
+- Core functions that operate on sequences expect the sequence as their last argument
+    - So, pipelines containing `map`, `filter`, `remove`, `reduce`, `into`, etc usually call for the `->>` macro
+- Core functions that operate on data structures expect the value they work on as their first argument
+    - So, pipelines containing `assoc`, `update`, `dissoc`, `get` and their `-in` variants to transform maps using these functions often require the `->` macro
