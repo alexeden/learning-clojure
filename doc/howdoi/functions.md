@@ -46,7 +46,6 @@ Declare named values local to a function's lexical scope?
 
 # Threading
 
-
 Pipe together multiple functions?
 
 ```clj
@@ -79,4 +78,19 @@ Pipe together multiple functions, where the functions have varying insertion poi
   (first v)
   (.substring v 1))
 ; "oo"
+```
+
+Pipe together multiple functions, make the evaluate of each function conditional?
+
+```clj
+(defn describe-number [n]
+  (cond-> []
+    (odd? n) (conj "odd")
+    (even? n) (conj "even")
+    (zero? n) (conj "zero")
+    (pos? n) (conj "positive")
+    (neg? n) (conj "negative")))
+
+(describe-number -2)    ; ["even" "negative"]
+(describe-number 3)     ; ["odd" "positive"]
 ```
