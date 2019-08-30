@@ -12,3 +12,9 @@
 - All values logically evaluate to `true` or `false`
     - The only false values are `false` and `nil`
 - `when` returns `nil` if the conditional is not met
+- Clojure provides recur and the sequence abstraction
+    - `recur` is "classic" recursion
+        - Consumers don’t control it, considered a lower-level facility
+    - Sequences represent iteration as values
+        - Consumers can partially iterate
+    - Reducers represent iteration as function composition
